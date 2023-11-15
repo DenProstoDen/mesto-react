@@ -1,39 +1,20 @@
-import logo from './images/logo.svg';
-import profileImg from './images/profile.jpg';
+import Header from './components/Header.jsx';
+import Main from './components/Main.jsx';
+import Footer from './components/Footer.jsx'
 
 function App() {
 
   return (
     <>
     <div className="page">
-      <header className="header">
-        <img src={logo} className="header__logo" alt="Место"/>
-      </header>
-      <main className="main">
-        <section className="profile">
-          <button type="button" className="profile__avatar-button">
-            <img
-            className="profile__avatar"
-            alt="Аватар"
-            src={profileImg}
-            /></button>
-          <div className="profile__info">
-            <div className="profile__id">
-              <h1 className="profile__name">Жак-Ив Кусто</h1>
-              <p className="profile__specialization">Исследователь океана</p>
-            </div>
-            <button className="profile__pencil" type="button"></button>
-          </div>
-          <button className="profile__add-button" type="button"></button>
-        </section>
-        <section className="elements">
-          <ul className="elements__list elements"></ul>
-        </section>
-      </main>
-      <footer className="footer">
-        <p className="footer__text">&copy; 2020 Mesto Russia</p>
-      </footer>
     </div>
+
+    <Header />
+
+    <Main />
+
+    <Footer />
+
     <div className="popup popup-add">
       <div className="popup__container">
         <button type="button" className="popup__close-button"></button>
