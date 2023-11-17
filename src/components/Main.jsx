@@ -9,7 +9,7 @@ export default function Main({onEditProfile, onAddPlace, onEditAvatar, onCardCli
     const [cards, setCards] = useState([])
   
     useEffect(() => {
-      Promise.all([Api.getInfo(), Api.getInitialCards()])
+      Promise.all([Api.getName(), Api.getCards()])
         .then(([userData, dataCards]) => {
           setUserName(userData.name)
           setUserDescription(userData.about)
@@ -20,14 +20,15 @@ export default function Main({onEditProfile, onAddPlace, onEditAvatar, onCardCli
     }, [])
 
     return(
-      <main className="main">
+      <main>
         <section className="profile">
           <button type="button" className="profile__avatar-button" onClick={onEditAvatar}>
             <img
             className="profile__avatar"
             alt="Аватар"
             src={userAvatar}
-            /></button>
+            />
+          </button>
           <div className="profile__info">
             <div className="profile__id">
               <h1 className="profile__name">{userName}</h1>

@@ -9,7 +9,7 @@ class Api {
     return res.ok ? res.json() : Promise.reject
     }
   
-    getInfo() {
+    getName() {
       return fetch(`${this._url}/users/me`, {
          headers: {
           authorization: this._authorization
@@ -18,7 +18,7 @@ class Api {
       .then(this._checkResponse)
     }
   
-    getInitialCards() {
+    getCards() {
       return fetch(`${this._url}/cards`, {
         headers: {
           authorization: this._authorization
@@ -27,37 +27,36 @@ class Api {
       .then(this._checkResponse)
     }
   
-    setUserInfo(data) {
-      return fetch (`${this._url}/users/me`, {
-        method: 'PATCH',
-        headers: this._headers,
-        body: JSON.stringify({
-          name: data.username,
-          about: data.info, 
+    editProfileInfo({name, about}) {
+      return fetch(`${this._url}/users/me`, {
+          headers: this._headers,
+          method: 'PATCH',
+          body: JSON.stringify({
+            name,
+            about
+          })
         })
-      })
     .then(this._checkResponse)
     }
   
     setNewAvatar(data) {
-      return fetch (`${this._url}/users/me/avatar`, {
-        method: 'PATCH',
+      return fetch(`${this._url}/users/me/avatar`, {
         headers: this._headers,
+        method: 'PATCH',
         body: JSON.stringify({
-          avatar: data.avatar, 
+          avatar: data.avatar
         })
       })
     .then(this._checkResponse)
     }
   
     addCard(data) {
-      return fetch(`${this._url}/cards`,{
-        method: 'POST',
+      return fetch(`${this._url}/cards`, {
         headers: this._headers,
-        body: JSON.stringify({
-          name: data.cardname,
-          link: data.link,
-        })
+        method: 'POST',
+        body: JSON.stringify({ 
+          name: data.name,
+          link: data.link })
       })
       .then(this._checkResponse)
     }
