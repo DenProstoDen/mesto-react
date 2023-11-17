@@ -1,6 +1,24 @@
-import profileImg from '../images/profile.jpg';
+import { useEffect, useState} from "react";
+import Card from './Cards.jsx';
+import Api from '../utils/Api.js';
 
-export default function Main() {
+export default function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
+    const [userName, setUserName] = useState('')
+    const [userDescription, setUserDescription] = useState('')
+    const [userAvatar, setUserAvatar] = useState('')
+    const [cards, setCards] = useState([])
+  
+    useEffect(() => {
+      Promise.all([Api.getInfo(), Api.getInitialCards()])
+        .then(([userData, dataCards]) => {
+          setUserName(userData.name)
+          setUserDescription(userData.about)
+          setUserAvatar(userData.avatar)
+          dataCards.forEach(data => data.myid = userData._id)
+          setCards(dataCards)
+        })
+    }, [])
+
     return(
       <main className="main">
         <section className="profile">
@@ -8,19 +26,25 @@ export default function Main() {
             <img
             className="profile__avatar"
             alt="Аватар"
-            src={profileImg}
+            src={userAvatar}
             /></button>
           <div className="profile__info">
             <div className="profile__id">
-              <h1 className="profile__name">Жак-Ив Кусто</h1>
-              <p className="profile__specialization">Исследователь океана</p>
+              <h1 className="profile__name">{userName}</h1>
+              <p className="profile__specialization">{userDescription}</p>
             </div>
-            <button className="profile__pencil" type="button"></button>
+            <button className="profile__pencil" type="button" onClick={onEditProfile}></button>
           </div>
           <button className="profile__add-button" type="button"></button>
         </section>
         <section className="elements">
-          <ul className="elements__list elements"></ul>
+          {cards.map(data => {
+            return (
+              <div key = {data._id}>
+                <Card card={data} onCardClick={onCardClick}/>
+              </div>
+            )
+          })}
         </section>
       </main>
     )
