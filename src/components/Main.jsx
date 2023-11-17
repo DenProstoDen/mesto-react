@@ -22,7 +22,7 @@ export default function Main({onEditProfile, onAddPlace, onEditAvatar, onCardCli
     return(
       <main className="main">
         <section className="profile">
-          <button type="button" className="profile__avatar-button">
+          <button type="button" className="profile__avatar-button" onClick={onEditAvatar}>
             <img
             className="profile__avatar"
             alt="Аватар"
@@ -35,9 +35,9 @@ export default function Main({onEditProfile, onAddPlace, onEditAvatar, onCardCli
             </div>
             <button className="profile__pencil" type="button" onClick={onEditProfile}></button>
           </div>
-          <button className="profile__add-button" type="button"></button>
+          <button className="profile__add-button" type="button" onClick={onAddPlace}></button>
         </section>
-        <section className="elements">
+        <section id="elements" className="elements">
           {cards.map(data => {
             return (
               <div key = {data._id}>

@@ -111,63 +111,34 @@ function App() {
         <span id="placeLink-error" className="error" />
       </PopupWithForm>
 
-
-    <div className="popup popup_place-add">
-      <div className="popup__container">
-        <button type="button" className="popup__close-button"></button>
-        <h2 className="popup__header">Новое место</h2>
-        <form id="formEditPlace" className="popup__form popup__form_place" name="personInformation">
-          <input
-            minLength="2"
-            maxLength="30"
-            id="place-name"
-            className="popup__input popup__input_type_place"
-            type="text"
-            placeholder="Место"
-            name="placeName"
-            required
-          />
-          <span id="placeName-error" className="error"></span>
-          <input
-            id="place-link"
-            className="popup__input popup__input_type_link"
+      <PopupWithForm 
+        name='personAvatar' 
+        title='Обновить аватар'
+        isOpen={isEditAvatarPopupOpen}
+        onClose = {closePopups}
+      >
+        <input
+            id="avatar"
             type="url"
+            name="avatar"
+            className="popup__input popup__input_type_avatar"
+            required=""
             placeholder="Ссылка"
-            name="placeLink"
-            required
           />
-          <span id="placeLink-error" className="error"></span>
-          <button type="submit" className="popup__save-button">Сохранить</button>
-        </form>
-      </div>
-    </div>
-    <div className="popup popup-image img-add">
-      <div className="popup-image__container">
-        <button type="button" className="popup__close-button"></button>
-        <img src="." alt="." className="popup-image__picture"/>
-        <h2 className="popup-image__text"></h2>
-      </div>
-    </div>
-    <div className="popup popup-avatar">
-      <div className="popup__container">
-        <button type="button" className="popup__close-button"></button>
-        <h2 className="popup__header">Обновить аватар</h2>
-        <form id="formEditAvatar" className="popup__form popup__form_avatar" name="personAvatar">
-          <input className="popup__input popup__input_type_avatar" type="url" placeholder="Ссылка" name="avatar" required/>
-          <span id="avatar-error" className="error"></span>
-          <button type="submit" className="popup__save-button" name="submitAva">Сменить</button>
-        </form> 
-      </div>
-    </div>
-    <div className="popup popup-delete">
-        <div className="popup__container">
-        <button type="button" className="popup__close-button"></button>
-        <h2 className="popup__header">Вы уверены?</h2>
-        <form name="cardDelete" className="popup__form popup__form_delete">
-          <button type="submit" className="popup__save-button popup__delete-btn">Да</button>
-        </form> 
-      </div>
-    </div>
+          <span id="avatar-error" className="error" />
+      </PopupWithForm>
+
+      <PopupWithForm 
+        name='delete' 
+        title='Вы уверены?'
+        titleButton='Да'
+      />
+
+      <PopupImage 
+        card={selectedCard}
+        isOpen={isImagePopup}
+        onClose={closePopups}
+      /> 
   </div>
   )
 }
