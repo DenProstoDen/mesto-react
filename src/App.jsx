@@ -7,34 +7,34 @@ import PopupWithForm from './components/PopupWithForm.jsx';
 
 function App() {
 
-  const [isEditProfilePopupOpen, setEditProfilePopupOpen] = useState(false)
-  const [isAddPlacePopupOpen, setAddPlacePopupOpen] = useState(false)
-  const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = useState(false)
+  const [isEditProfilePopupOpen, profilePopupOpen] = useState(false)
+  const [isAddPlacePopupOpen, placePopupOpen] = useState(false)
+  const [isEditAvatarPopupOpen, avatarPopupOpen] = useState(false)
   const [selectedCard, setSelectedCard] = useState({})
-  const [isImagePopup, setImagePopup ] = useState(false)
+  const [isImagePopup, imagePopup ] = useState(false)
 
   function closePopups() {
-    setEditProfilePopupOpen(false)
-    setAddPlacePopupOpen(false)
-    setEditAvatarPopupOpen(false)
-    setImagePopup(false)
+    profilePopupOpen(false)
+    placePopupOpen(false)
+    avatarPopupOpen(false)
+    imagePopup(false)
   }
 
   function handleProfileClick() {
-    setEditProfilePopupOpen(true)
+    profilePopupOpen(true)
   }
 
   function handlePlaceClick() {
-    setAddPlacePopupOpen(true)
+    placePopupOpen(true)
   }
 
   function handleAvatarClick() {
-    setEditAvatarPopupOpen(true)
+    avatarPopupOpen(true)
   }
 
   function handleCardClick(card) {
     setSelectedCard(card)
-    setImagePopup(true)
+    imagePopup(true)
   }
 
   return (
