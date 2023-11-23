@@ -14,7 +14,7 @@ export default function PopupPlace ({isOpen, onClose, onAddPlace}) {
         onAddPlace({name: values.name, link: values.link}, reset)
     }
     return (
-        <PopupWithForm 
+        <PopupWithForm
         name='add-card' 
         title='Новое место'
         titleButton='Создать'
