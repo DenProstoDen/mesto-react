@@ -110,7 +110,7 @@ function App() {
   }
 
   function handleUpdateUser(userData, reset) {
-    api.setUserInfo(userData)
+    api.editProfileInfo(userData)
       .then((res )=> {
         setCurrentUser(res)
         closeAllPopups()

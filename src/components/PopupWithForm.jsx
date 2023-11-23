@@ -6,7 +6,7 @@ export default function PopupWithForm({name, title, titleButton, children, isOpe
             <h2 className={`popup__header`}>{title}</h2>
             <form className="popup__form" name={name} noValidate onSubmit={onSubmit}>
                 {children}
-                <button type="submit" className={`popup__save ${isValid ? '' : 'popup__save_disabled'}`}>
+                <button type="submit" className={`popup__save-button ${isValid ? '' : 'popup__save-button_invalid'}`}>
                 {titleButton||'Сохранить'}
                 </button>
             </form>

@@ -3,7 +3,7 @@ import useFormValidation from "../utils/FormValidation.js";
 import PopupWithForm  from "./PopupWithForm.jsx";
 import CurrentUserContext from "../context/CurentUserContext.js";
 
-export default function PopupProfile ({isOpen, onClose, newProfile}) {
+export default function PopupProfile ({isOpen, onClose, onUpdateUser}) {
     const currentUser = useContext(CurrentUserContext);
     const { values, error, isValid, isInputValid, handleChange, reset, setValue } = useFormValidation();
     
@@ -19,9 +19,9 @@ export default function PopupProfile ({isOpen, onClose, newProfile}) {
 
     function handleSubmit(evt) {
         evt.preventDefault()
-        newProfile({ name: values.name, info: values.info }, reset)
+        onUpdateUser({ name: values.name, info: values.info }, reset)
     }
-
+    return (
     <PopupWithForm 
         name='edit-profile' 
         title='Редактировать профиль'
@@ -46,7 +46,7 @@ export default function PopupProfile ({isOpen, onClose, newProfile}) {
         <input
           id="info"
           type="text"
-          name="job"
+          name="info"
           className={`popup__input popup__input_type_info ${isInputValid.info === undefined || isInputValid.info ? '' : 'popup__input_invalid'}`}
           required=""
           placeholder="Расскажите о себе"
@@ -57,4 +57,5 @@ export default function PopupProfile ({isOpen, onClose, newProfile}) {
         />
         <span id="job-error" className="error"></span>
     </PopupWithForm>
-}
+    )
+}   
