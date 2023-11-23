@@ -34,7 +34,7 @@ export default function PopupProfile ({isOpen, onClose, onUpdateUser}) {
           id="name"
           type="text"
           name="name"
-          className={`popup__input popup__input_type_name ${isInputValid.name === undefined || isInputValid.name ? '' : 'popup__input_invalid'}`}
+          className={`popup__input popup__input_type_name ${isInputValid.name === undefined || isInputValid.name ? '' : 'popup__input_state_invalid'}`}
           required
           placeholder="Ваше имя"
           minLength={2}
@@ -47,12 +47,12 @@ export default function PopupProfile ({isOpen, onClose, onUpdateUser}) {
           id="info"
           type="text"
           name="info"
-          className={`popup__input popup__input_type_info ${isInputValid.info === undefined || isInputValid.info ? '' : 'popup__input_invalid'}`}
+          className={`popup__input popup__input_type_info ${isInputValid.info === undefined || isInputValid.info ? '' : 'popup__input_state_invalid'}`}
           required=""
           placeholder="Расскажите о себе"
           minLength={2}
           maxLength={200}
-          value={values.info ? values.info : ''}
+          value={values.info ? values.info : ''}    
           onChange={handleChange}
         />
         <span id="job-error" className="error"></span>

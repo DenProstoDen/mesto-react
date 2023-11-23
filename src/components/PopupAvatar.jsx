@@ -1,9 +1,8 @@
 import { useRef } from "react";
 import PopupWithForm from "./PopupWithForm.jsx";
-import CurentUserContext from "../context/CurentUserContext";
 import useFormValidation from "../utils/FormValidation.js";
 
-export default function PopupAvatar ({isOpen, onClose, newAvatar}) {
+export default function PopupAvatar ({isOpen, onClose, onUpdateAvatar}) {
     const input = useRef();
     const { values, error, isValid, isInputValid, handleChange, reset } = useFormValidation();
     
@@ -13,7 +12,7 @@ export default function PopupAvatar ({isOpen, onClose, newAvatar}) {
 
     function handleSubmit(evt) {
         evt.preventDefault()
-        newAvatar({avatar: input.current.value}, reset)
+        onUpdateAvatar({avatar: input.current.value}, reset)
     }
 
     return (
@@ -26,10 +25,11 @@ export default function PopupAvatar ({isOpen, onClose, newAvatar}) {
         isValid={isValid}
       >
         <input
+            ref={input}
             id="avatar"
             type="url"
             name="avatar"
-            className={`popup__input popup__input_type_avatar ${isInputValid.avatar === undefined || isInputValid.avatar ? '' : 'popup__input_invalid'}`}
+            className={`popup__input popup__input_type_avatar ${isInputValid.avatar === undefined || isInputValid.avatar ? '' : 'popup__input_state_invalid'}`}
             required
             placeholder="Ссылка"
             value={values.avatar ? values.avatar : ''}

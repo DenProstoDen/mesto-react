@@ -1,8 +1,7 @@
 import PopupWithForm from "./PopupWithForm.jsx";
-import CurrentUserContext from "../context/CurentUserContext";
 import useFormValidation from "../utils/FormValidation.js";
 
-export default function PopupPlace ({isOpen, onClose, addPlace}) {
+export default function PopupPlace ({isOpen, onClose, onAddPlace}) {
     const { values, error, isValid, isInputValid, handleChange, reset } = useFormValidation();
 
     function resetClose() {
@@ -12,7 +11,7 @@ export default function PopupPlace ({isOpen, onClose, addPlace}) {
 
     function handleSubmit(evt) {
         evt.preventDefault()
-        addPlace({cardname: values.name, link: values.link}, reset)
+        onAddPlace({name: values.name, link: values.link}, reset)
     }
     return (
         <PopupWithForm 
@@ -27,7 +26,7 @@ export default function PopupPlace ({isOpen, onClose, addPlace}) {
         <input
           id="place-name"
           type="text"
-          className={`popup__input popup__input_type_place ${isInputValid.cardname === undefined || isInputValid.name ? '' : 'popup__input_invalid'}`}
+          className={`popup__input popup__input_type_place ${isInputValid.name === undefined || isInputValid.name ? '' : 'popup__input_state_invalid'}`}
           name="placeName"
           required=""
           placeholder="Место"
@@ -40,7 +39,7 @@ export default function PopupPlace ({isOpen, onClose, addPlace}) {
         <input
           id="place-link"
           type="url"
-          className={`popup__input popup__input_type_link ${isInputValid.link === undefined || isInputValid.link ? '' : 'popup__input_invalid'}`}
+          className={`popup__input popup__input_type_link ${isInputValid.link === undefined || isInputValid.link ? '' : 'popup__input_state_invalid'}`}
           name="placeLink"
           required
           placeholder="Ссылка"
