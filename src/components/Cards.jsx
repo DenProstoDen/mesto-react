@@ -1,3 +1,6 @@
+import { userContext } from "react"
+import CurrentUserContext from "../context/CurentUserContext.js"
+
 export default function Card ({card, onCardClick}){
     return(
         <div className="card">
