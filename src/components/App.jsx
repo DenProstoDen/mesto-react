@@ -99,7 +99,7 @@ function App() {
 
   function handleCardDelete(evt) {
     evt.preventDefault()
-    api.deleteCardConfirm(deleteCard)
+    api.deleteCard(deleteCard)
       .then(() => {
         setCards(cards.filter(card => {
           return card._id !== deleteCard
