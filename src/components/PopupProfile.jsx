@@ -42,7 +42,7 @@ export default function PopupProfile ({isOpen, onClose, onUpdateUser}) {
           value={values.name ? values.name : ''}
           onChange={handleChange}
         />
-        <span id="name-error" className="error"></span>
+        <span id="name-error" className="error">{error.name}</span>
         <input
           id="info"
           type="text"
@@ -55,7 +55,7 @@ export default function PopupProfile ({isOpen, onClose, onUpdateUser}) {
           value={values.info ? values.info : ''}    
           onChange={handleChange}
         />
-        <span id="job-error" className="error"></span>
+        <span id="job-error" className="error">{error.info}</span>
     </PopupWithForm>
     )
 }   

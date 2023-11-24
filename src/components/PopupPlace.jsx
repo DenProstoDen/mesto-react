@@ -36,7 +36,7 @@ export default function PopupPlace ({isOpen, onClose, onAddPlace}) {
           value={values.placename ? values.placename : ''}
           onChange={handleChange}
         />
-        <span id="placename-error" className="error"></span>
+        <span id="placename-error" className="error">{error.placename}</span>
         <input
           id="link"
           type="url"
@@ -47,7 +47,7 @@ export default function PopupPlace ({isOpen, onClose, onAddPlace}) {
           value={values.link ? values.link : ''}
           onChange={handleChange}
         />
-        <span id="placeLink-error" className="error"></span>
+        <span id="placeLink-error" className="error">{error.link}</span>
       </PopupWithForm>
     )   
 }

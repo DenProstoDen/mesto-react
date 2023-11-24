@@ -35,7 +35,7 @@ export default function PopupAvatar ({isOpen, onClose, onUpdateAvatar}) {
             value={values.avatar ? values.avatar : ''}
             onChange={handleChange}
           />
-          <span id="avatar-error" className="error"></span>
+          <span id="avatar-error" className="error">{error.avatar}</span>
     </PopupWithForm>
     )
 }
