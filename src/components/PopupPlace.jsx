@@ -11,36 +11,37 @@ export default function PopupPlace ({isOpen, onClose, onAddPlace}) {
 
     function handleSubmit(evt) {
         evt.preventDefault()
-        onAddPlace({name: values.name, link: values.link}, reset)
+        onAddPlace({placename: values.placename, link: values.link}, reset)
     }
     return (
         <PopupWithForm
-        name='add-card' 
+        name="add-card"
         title='Новое место'
         titleButton='Создать'
         isOpen={isOpen}
+        onClose = {resetClose}
         isValid={isValid}
         onSubmit={handleSubmit}
-        onClose = {resetClose}
       >
         <input
-          id="place-name"
+          id="placename"
           type="text"
-          className={`popup__input popup__input_type_place ${isInputValid.name === undefined || isInputValid.name ? '' : 'popup__input_state_invalid'}`}
-          name="placeName"
-          required=""
+          title='Создать'
+          className={`popup__input popup__input_type_place ${isInputValid.placename === undefined || isInputValid.placename ? '' : 'popup__input_state_invalid'}`}
+          name="placename"
+          required
           placeholder="Место"
           minLength={2}
           maxLength={30}
-          value={values.name ? values.name : ''}
+          value={values.placename ? values.placename : ''}
           onChange={handleChange}
         />
-        <span id="placeName-error" className="error"></span>
+        <span id="placename-error" className="error"></span>
         <input
-          id="place-link"
+          id="link"
           type="url"
           className={`popup__input popup__input_type_link ${isInputValid.link === undefined || isInputValid.link ? '' : 'popup__input_state_invalid'}`}
-          name="placeLink"
+          name="link"
           required
           placeholder="Ссылка"
           value={values.link ? values.link : ''}
