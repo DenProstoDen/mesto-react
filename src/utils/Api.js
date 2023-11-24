@@ -55,7 +55,7 @@ class Api {
         headers: this._headers,
         method: 'POST',
         body: JSON.stringify({ 
-          name: data.name,
+          name: data.placename,
           link: data.link })
       })
       .then(this._checkResponse)

@@ -1,5 +1,4 @@
 import Card from './Cards.jsx';
-import Api from '../utils/Api.js';
 import { useContext} from "react"
 import CurrentUserContext from '../context/CurentUserContext.js';
 
@@ -28,7 +27,7 @@ export default function Main({onEditProfile, onAddPlace, onEditAvatar, onCardCli
         <section id="elements" className="elements">
           {cards.map(data => {
             return (
-              <div key = {data._id}>
+              <div key={data._id}>
                 <Card card={data} onCardClick={onCardClick} onDelete={onDelete} onCardLike={onCardLike}/>
               </div>
             )
