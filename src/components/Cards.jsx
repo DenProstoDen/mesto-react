@@ -22,7 +22,7 @@ export default function Card ({card, onCardClick, onDelete, onCardLike}){
               <span className="card__like_numbers">{card.likes.length}</span>
             </button> 
           </div>
-          {currentUser._id === card.owner._id &&  <button type="button" className="card__delete-button" onClick={() => onDelete(card._id)}/>}
+          {currentUser._id === card.owner._id &&  <button type="button" className="card__delete" onClick={() => onDelete(card._id)}/>}
         </div>
     )
 }
