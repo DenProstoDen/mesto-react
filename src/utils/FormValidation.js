@@ -13,16 +13,16 @@ export default function useFormValidation() {
     const valid = evt.target.validity.valid
     const form = evt.target.form
 
-    setValues((oldValues) => {
-      return { ...oldValues, [name]: value}
+    setValues((values) => {
+      return { ...values, [name]: value}
     })
 
-    setErrors((oldErrors) => {
-      return { ...oldErrors, [name]: validationMessage}
+    setErrors((errors) => {
+      return { ...errors, [name]: validationMessage}
     })
 
-    setIsInputValid((oldIsInputValid) => {
-      return { ...oldIsInputValid, [name]: valid}
+    setIsInputValid((IsInputValid) => {
+      return { ...IsInputValid, [name]: valid}
     })
 
     setIsValid(form.checkValidity())
@@ -37,8 +37,8 @@ export default function useFormValidation() {
   }
 
   const setValue = useCallback((name, value) => {
-    setValues((oldValues) => {
-      return {...oldValues, [name]: value}
+    setValues((values) => {
+      return {...values, [name]: value}
     })
   }, [])
 
