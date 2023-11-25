@@ -8,10 +8,14 @@ export default function useFormValidation() {
 
   function handleChange(evt) {
     const name = evt.target.name
+    const form = evt.target.form
+    const valid = evt.target.validity.valid
     const value = evt.target.value
     const validationMessage = evt.target.validationMessage
-    const valid = evt.target.validity.valid
-    const form = evt.target.form
+
+    setIsInputValid((IsInputValid) => {
+      return { ...IsInputValid, [name]: valid}
+    })
 
     setValues((values) => {
       return { ...values, [name]: value}
@@ -21,9 +25,6 @@ export default function useFormValidation() {
       return { ...errors, [name]: validationMessage}
     })
 
-    setIsInputValid((IsInputValid) => {
-      return { ...IsInputValid, [name]: valid}
-    })
 
     setIsValid(form.checkValidity())
 
