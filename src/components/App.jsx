@@ -12,7 +12,7 @@ import PopupProfile from './PopupProfile.jsx';
 
 function App() {
 
-  const [isEditProfilePopupOpen, profilePopupOpen] = useState(false)
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false)
   const [isAddPlacePopupOpen, placePopupOpen] = useState(false)
   const [isEditAvatarPopupOpen, avatarPopupOpen] = useState(false)
   const [selectedCard, setSelectedCard] = useState({})
@@ -23,7 +23,7 @@ function App() {
   const [deleteCard, setDeleteCard] = useState('')
 
   const setStateCloseAllPopups = useCallback(() => {
-    profilePopupOpen(false)
+    setIsEditProfilePopupOpen(false)
     placePopupOpen(false)
     avatarPopupOpen(false)
     imagePopup(false)
@@ -48,7 +48,7 @@ function App() {
 
 
   function handleProfileClick() {
-    profilePopupOpen(true)
+    setIsEditProfilePopupOpen(true)
     setEventListenerForDocument()
   }
 
