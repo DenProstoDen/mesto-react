@@ -13,21 +13,21 @@ import PopupProfile from './PopupProfile.jsx';
 function App() {
 
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false)
-  const [isAddPlacePopupOpen, placePopupOpen] = useState(false)
-  const [isEditAvatarPopupOpen, avatarPopupOpen] = useState(false)
+  const [isAddPlacePopupOpen, setIsPlacePopupOpen] = useState(false)
+  const [isEditAvatarPopupOpen, setAvataPopupOpen] = useState(false)
   const [selectedCard, setSelectedCard] = useState({})
-  const [isImagePopup, imagePopup ] = useState(false)
-  const [isDeletePopupOpen, deletePopupOpen] = useState(false)
+  const [isImagePopup, setImagePopup ] = useState(false)
+  const [isDeletePopupOpen, setDeletePopupOpen] = useState(false)
   const [currentUser, setCurrentUser] =useState({})
   const [cards, setCards] = useState([])
   const [deleteCard, setDeleteCard] = useState('')
 
   const setStateCloseAllPopups = useCallback(() => {
     setIsEditProfilePopupOpen(false)
-    placePopupOpen(false)
-    avatarPopupOpen(false)
-    imagePopup(false)
-    deletePopupOpen(false)
+    setIsPlacePopupOpen(false)
+    setAvataPopupOpen(false)
+    setImagePopup(false)
+    setDeletePopupOpen(false)
   },[])
 
   const closePopupByEsc = useCallback ((evt) => {
@@ -53,24 +53,24 @@ function App() {
   }
 
   function handlePlaceClick() {
-    placePopupOpen(true)
+    setIsPlacePopupOpen(true)
     setEventListenerForDocument()
   }
 
   function handleAvatarClick() {
-    avatarPopupOpen(true)
+    setAvataPopupOpen(true)
     setEventListenerForDocument()
   }
 
   function handleCardClick(card) {
     setSelectedCard(card)
-    imagePopup(true)
+    setImagePopup(true)
     setEventListenerForDocument()
   }
 
   function handleDelete(cardId) {
     setDeleteCard(cardId)
-    deletePopupOpen(true)
+    setDeletePopupOpen(true)
     setEventListenerForDocument()
   }
 
